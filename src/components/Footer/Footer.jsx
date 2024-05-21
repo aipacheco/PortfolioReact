@@ -7,40 +7,7 @@ const Footer = () => {
 
   return (
     <>
-      {/* {!token ? (
-        <nav className="navbar bg-body-secondary fixed-bottom footer">
-          <div className="container justify-content-around d-flex flex-wrap">
-            <LinkButton direction={"/login"} text={"Login"} />
-            <LinkButton direction={"/register"} text={"Registrate"} />
-          </div>
-        </nav>
-      ) : (
-        <nav className="navbar bg-body-secondary fixed-bottom footer">
-          <div className="container justify-content-around d-flex flex-wrap">
-            <LinkButton
-              customClass="footer-button"
-              footerClass="button-mobile"
-              direction={"/games"}
-              text={"Home"}
-              icon={"home"}
-            />
-            <LinkButton
-              customClass="footer-button"
-              footerClass="button-mobile"
-              direction={"/newGame"}
-              text={"Nuevo juego"}
-              icon={"add"}
-            />
-            <LinkButton
-              customClass="footer-button"
-              footerClass="button-mobile"
-              direction={`/user/${decode.username}`}
-              text={"Perfil"}
-              icon={"person"}
-            />
-          </div>
-        </nav>
-      )} */}
+     
     </>
   )
 }

@@ -2,6 +2,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Footer from "./components/Footer/Footer"
 import Navbar from "./components/Navbar/Navbar"
 import Home from "./pages/Home/Home"
+import About from "./pages/About/About"
+import Projects from "./pages/Projects/Projects"
+import Admin from "./pages/Admin/Admin"
+import Contact from "./pages/Contact/Contact"
 
 
 export const Layout = () => {
@@ -14,6 +18,10 @@ export const Layout = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About/>} />
+          <Route path="/projects" element={<Projects/>} />
+          <Route path="/admin" element={<Admin/>} />
+          <Route path="/contact" element={<Contact/>} />
         </Routes>
         <Footer />
       </BrowserRouter>

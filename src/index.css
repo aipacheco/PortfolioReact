@@ -1,8 +1,42 @@
-:root {
+#root {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  font-family: Montserrat, sans-serif;
 }
 div {
   border: 0.5px solid red;
+}
+.hidden {
+  display: none;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.animate-on-scroll {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Animaciones */
+
+.kenburns-top-left {
+  -webkit-animation: kenburns-top-left 5s ease-out both;
+  animation: kenburns-top-left 5s ease-out both;
+}
+@keyframes kenburns-top-left {
+  0% {
+    -webkit-transform: scale(1) translate(0, 0);
+    transform: scale(1) translate(0, 0);
+    -webkit-transform-origin: 16% 16%;
+    transform-origin: 16% 16%;
+  }
+  100% {
+    -webkit-transform: scale(1.1) translate(-20px, -15px);
+    transform: scale(1.1) translate(-20px, -15px);
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+  }
 }

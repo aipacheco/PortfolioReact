@@ -2,11 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Footer from "./components/Footer/Footer"
 import Navbar from "./components/Navbar/Navbar"
 import Home from "./pages/Home/Home"
-import About from "./pages/About/About"
-import Projects from "./pages/Projects/Projects"
 import Admin from "./pages/Admin/Admin"
-import Contact from "./pages/Contact/Contact"
-
+import Login from "./pages/Login/Login"
 
 export const Layout = () => {
   /*una ruta se compone de una dirección y unos params, por ejemplo en profile le estamos pasando un username, 
@@ -18,10 +15,8 @@ export const Layout = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About/>} />
-          <Route path="/projects" element={<Projects/>} />
-          <Route path="/admin" element={<Admin/>} />
-          <Route path="/contact" element={<Contact/>} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>

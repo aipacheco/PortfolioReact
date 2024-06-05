@@ -7,7 +7,7 @@ const About = () => {
           <div className="col-md-4">
             <div className="center">
               <img
-                src="https://res.cloudinary.com/dptbxi3iu/image/upload/v1716374082/portfolio/2022-08-25_18.41.08_tgpbiq.jpg"
+                src="https://res.cloudinary.com/dptbxi3iu/image/upload/v1717487428/portfolio/Perfil_zarrbn.jpg"
                 className="img-fluid img-profile"
                 alt="..."
               />

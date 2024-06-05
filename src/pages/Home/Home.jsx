@@ -1,16 +1,37 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import About from "../../components/About/About"
 import Jumbotron from "../../components/Jumbotron/Jumbotron"
 import WorkCard from "../../components/WorkCard/WorkCard"
+import Projects from "../../components/Projects/Projects"
+import { GetStudies } from "../../services/studiesService"
+import { GetWorks } from "../../services/workServices"
 
 const Home = () => {
-  
+  const [studies, setStudies] = useState([])
+  const [works, setWorks] = useState([])
+
+  const fetchData = async () => {
+    //loading
+    try {
+      const allStudies = await GetStudies()
+      setStudies(allStudies.data)
+      const allWorks = await GetWorks()
+      setWorks(allWorks.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   useEffect(() => {
     const handleScroll = () => {
       const elements = document.querySelectorAll(".animate-on-scroll")
-      const windowHeight = window.innerHeight 
+      const windowHeight = window.innerHeight
       elements.forEach((element) => {
-        const rect = element.getBoundingClientRect() 
+        const rect = element.getBoundingClientRect()
         if (rect.top <= windowHeight && rect.bottom >= 0) {
           element.style.visibility = "visible"
           element.style.opacity = "1"
@@ -37,63 +58,51 @@ const Home = () => {
       />
       <About />
       <div className="container ">
-        <h3 className="p-1">Formación FullStack</h3>
-        <WorkCard
-          title={"Full Stack Developer"}
-          text={
-            "Formación intensiva de 12 semanas en tecnologías y metodologías ágiles, tales como JavaScript, TypeScript, ReactJS, Redux, NodeJS, Express, PHP, Laravel, calidad del software, Git y maquetación web."
-          }
-          location={"GeeksHubs Academy"}
-          from={"01/2024"}
-          to={"05/2024"}
-        />
-        <WorkCard
-          title={"Full Stack Developer"}
-          text={
-            "Formación online de 18 semanas part-time en tecnologías tales como JavaScript, ReactJS, Bootstrap, Python, Flask, Git y maquetación web."
-          }
-          location={"4Geeks Academy"}
-          from={"01/2023"}
-          to={"06/2023"}
-        />
+        <h3 className="p-1">
+          {" "}
+          <strong>Formación FullStack</strong>{" "}
+        </h3>
+        {studies.length > 0 &&
+          studies.map((study) => (
+            <div key={study._id}>
+              <WorkCard
+                key={study._id}
+                title={study.title}
+                text={study.description}
+                location={study.location}
+                from={study.from}
+                to={study.to}
+              />
+            </div>
+          ))}
       </div>
       <div className="container mb-3">
-        <h3 className="p-1">Experiencia laboral</h3>
-        <WorkCard
-          title={"Operador de central de alarmas"}
-          text={
-            "Responsable de la supervisión y administración de sistemas de alarmas. Asunción de responsabilidades como líder técnico interino durante los períodos de vacaciones, incluyendo la supervisión del personal técnico, coordinación de tareas y resolución de problemas de mayor complejidad. Aplicación de habilidades técnicas avanzadas para mejorar la eficacia del sistema y del equipo de trabajo."
-          }
-          location={"Alert System"}
-          from={"09/2018"}
-          to={"03/2023"}
-        />
-        <WorkCard
-          title={"Operador de central de alarmas"}
-          text={
-            "Gestión y supervisión de sistemas de alarmas. Identificación, diagnóstico y resolución eficiente de problemas técnicos complejos, asegurando la máxima operatividad y funcionalidad de los sistemas."
-          }
-          location={"Feix Electronics"}
-          from={"06/2013"}
-          to={"09/2018"}
-        />
-        <WorkCard
-          title={"Operador de central de alarmas"}
-          text={
-            "Supervisión y administración de sistemas de alarmas en un entorno altamente exigente y de gran volumen de abonados. Identificación y resolución rápida de problemas técnicos, asegurando la continua operatividad de los sistemas. Comunicación con las partes interesadas, incluyendo servicios de emergencia."
-          }
-          location={"Redsa"}
-          from={"12/2011"}
-          to={"04/2013"}
-        />
+        <h3 className="p-1">
+          <strong>Experiencia laboral</strong>
+        </h3>
+        {works.length > 0 &&
+          works.map((work) => (
+            <div key={work._id}>
+              <WorkCard
+                key={work._id}
+                title={work.title}
+                text={work.description}
+                location={work.location}
+                from={work.from}
+                to={work.to}
+              />
+            </div>
+          ))}
       </div>
-
       <div id="Projects"></div>
       <Jumbotron
         image="https://res.cloudinary.com/dptbxi3iu/image/upload/v1716375458/portfolio/technology-1283624_1920_mrivsq.jpg"
         title={"Proyectos"}
         className="kenburns-top-left animate-on-scroll"
       />
+      <div className="container mt-3">
+        <Projects />
+      </div>
       <div id="Contact"></div>
     </div>
   )

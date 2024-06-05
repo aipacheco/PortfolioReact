@@ -24,10 +24,6 @@ const Navbar = () => {
     }
   }, [])
 
-  const handleLogout = () => {
-    dispatch(clearAuthToken())
-    navigate("/login", { replace: true })
-  }
 
   const handleAdmin = () => {
     navigate("/admin", { replace: true })
@@ -68,14 +64,14 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <NavLink to="/#contact" className="navbar-brand">
+                <Link to="/#Contact" className="navbar-brand">
                   <div className="nav-link">Contacto</div>
-                </NavLink>
+                </Link>
               </li>
               {token & (decode.role === "admin") ? (
                 <li className="nav-item">
                   <NavLink to="/admin" className="navbar-brand">
-                    <div className="nav-link">Admin</div>
+                    <div className="nav-link"onClick={handleAdmin}>Admin</div>
                   </NavLink>
                 </li>
               ) : null}
